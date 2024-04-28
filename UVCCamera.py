@@ -29,7 +29,7 @@ class SyncSignal:
         return True
             
 @ray.remote
-class cam_worker:
+class UVCCamera:
     def __init__(self,id,frames_num = 100,width = 1280,height=720) -> None:
         self.id = id
         self.init_flag = False
