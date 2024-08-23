@@ -1,16 +1,16 @@
 from UVCCamera import *
 
 def main():
-    cam_num = 4
+    cam_num = 3
     fps = 15
-    frame_num = 700
-    out_dir = './data_0428_9'
-    os.makedirs(out_dir)
+    frame_num = 300
+    out_dir = './data/data_0823_1'
+    os.makedirs(out_dir, exist_ok=True)
     
     # init parallel camera using ray  
     ray.init()
     sync_signal = SyncSignal.remote()
-    workers = [UVCCamera.remote(i * 2, frame_num) for i in range(cam_num)]
+    workers = [UVCCamera.remote(i+1, frame_num) for i in range(cam_num)]
     res = ray.get([workers[i].init_camera.remote() for i in range(cam_num)])
     print(res)
     processes = [workers[i].capture_soft_sync.remote(sync_signal) for i in range(cam_num)]
