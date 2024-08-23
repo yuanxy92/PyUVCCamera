@@ -3,8 +3,8 @@ from UVCCamera import *
 def main():
     cam_num = 3
     fps = 15
-    frame_num = 300
-    out_dir = './data/data_0823_1'
+    frame_num = 2000
+    out_dir = './data/data_0823_6'
     os.makedirs(out_dir, exist_ok=True)
     
     # init parallel camera using ray  
